@@ -8,6 +8,7 @@ import "github.com/mwitkow/go-proto-validators/validator.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 import "managementpb/ia/boolean_flag.proto";
 import "managementpb/ia/channels.proto";
 import "managementpb/ia/pagination.proto";
@@ -132,22 +133,22 @@ message UpdateAlertRuleRequest {
       string_not_empty: true
     }
   ];
-  // New rule status. Should be set.
-  bool disabled = 2;
-  // Rule parameters. All template parameters should be set.
+  // New rule status.
+  google.protobuf.BoolValue disabled = 2;
+  // Rule parameters.
   repeated RuleParam params = 3;
-  // Rule duration. Should be set.
+  // Rule duration.
   google.protobuf.Duration for = 4;
-  // Rule severity. Should be set.
+  // Rule severity.
   management.Severity severity = 6;
   // All custom labels to add or remove (with empty values) to default labels from template.
   map<string, string> custom_labels = 8;
-  // Filters. Should be set.
+  // Filters.
   repeated Filter filters = 10;
-  // Channels. Should be set.
+  // Channels.
   repeated string channel_ids = 11;
-  // Rule human-readable summary. Should be set.
-  string summary = 12;
+  // Rule human-readable summary.
+  google.protobuf.StringValue summary = 12;
 }
 
 message UpdateAlertRuleResponse {}

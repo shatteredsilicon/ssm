@@ -27282,12 +27282,12 @@
                   "x-order": 0
                 },
                 "disabled": {
-                  "description": "New rule status. Should be set.",
+                  "description": "New rule status.",
                   "type": "boolean",
                   "x-order": 1
                 },
                 "params": {
-                  "description": "Rule parameters. All template parameters should be set.",
+                  "description": "Rule parameters.",
                   "type": "array",
                   "items": {
                     "description": "RuleParam represents a single rule parameter for List, Change and Update APIs.",
@@ -27331,7 +27331,7 @@
                   "x-order": 2
                 },
                 "for": {
-                  "description": "Rule duration. Should be set.",
+                  "description": "Rule duration.",
                   "type": "string",
                   "x-order": 3
                 },
@@ -27361,7 +27361,7 @@
                   "x-order": 5
                 },
                 "filters": {
-                  "description": "Filters. Should be set.",
+                  "description": "Filters.",
                   "type": "array",
                   "items": {
                     "description": "Filter repsents a single filter condition.",
@@ -27391,7 +27391,7 @@
                   "x-order": 6
                 },
                 "channel_ids": {
-                  "description": "Channels. Should be set.",
+                  "description": "Channels.",
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -27399,7 +27399,7 @@
                   "x-order": 7
                 },
                 "summary": {
-                  "description": "Rule human-readable summary. Should be set.",
+                  "description": "Rule human-readable summary.",
                   "type": "string",
                   "x-order": 8
                 }

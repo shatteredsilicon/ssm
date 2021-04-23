@@ -125,13 +125,13 @@ type UpdateAlertRuleBody struct {
 	// Rule ID.
 	RuleID string `json:"rule_id,omitempty"`
 
-	// New rule status. Should be set.
+	// New rule status.
 	Disabled bool `json:"disabled,omitempty"`
 
-	// Rule parameters. All template parameters should be set.
+	// Rule parameters.
 	Params []*ParamsItems0 `json:"params"`
 
-	// Rule duration. Should be set.
+	// Rule duration.
 	For string `json:"for,omitempty"`
 
 	// Severity represents severity level of the check result or alert.
@@ -141,13 +141,13 @@ type UpdateAlertRuleBody struct {
 	// All custom labels to add or remove (with empty values) to default labels from template.
 	CustomLabels map[string]string `json:"custom_labels,omitempty"`
 
-	// Filters. Should be set.
+	// Filters.
 	Filters []*FiltersItems0 `json:"filters"`
 
-	// Channels. Should be set.
+	// Channels.
 	ChannelIds []string `json:"channel_ids"`
 
-	// Rule human-readable summary. Should be set.
+	// Rule human-readable summary.
 	Summary string `json:"summary,omitempty"`
 }
 

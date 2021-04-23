@@ -8,6 +8,7 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/duration"
 	_ "github.com/golang/protobuf/ptypes/timestamp"
+	_ "github.com/golang/protobuf/ptypes/wrappers"
 	_ "github.com/mwitkow/go-proto-validators"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 	_ "github.com/percona/pmm/api/managementpb"
@@ -122,6 +123,11 @@ func (this *UpdateAlertRuleRequest) Validate() error {
 	if this.RuleId == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("RuleId", fmt.Errorf(`value '%v' must not be an empty string`, this.RuleId))
 	}
+	if this.Disabled != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Disabled); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Disabled", err)
+		}
+	}
 	for _, item := range this.Params {
 		if item != nil {
 			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
@@ -140,6 +146,11 @@ func (this *UpdateAlertRuleRequest) Validate() error {
 			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
 				return github_com_mwitkow_go_proto_validators.FieldError("Filters", err)
 			}
+		}
+	}
+	if this.Summary != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Summary); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Summary", err)
 		}
 	}
 	return nil
