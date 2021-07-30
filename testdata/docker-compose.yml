@@ -97,7 +97,7 @@ services:
       - MYSQL_ROOT_HOST='%'  # needs to be enclosed with quotes
       - UMASK=0777  # for slowlog file
     volumes:
-      - /tmp/mysql/log:/tmp/mysql/log
+      - mysql-log:/tmp/mysql/log
       - ./docker-db-setup-scripts/docker_ps_8_0.sh:/docker-entrypoint-initdb.d/:rw
     networks:
       - pmm-network
