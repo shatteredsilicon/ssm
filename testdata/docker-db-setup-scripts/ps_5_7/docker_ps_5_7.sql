@@ -1,4 +1,3 @@
-SET GLOBAL slow_query_log='ON';
 INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME 'query_response_time.so';
 INSTALL PLUGIN QUERY_RESPONSE_TIME SONAME 'query_response_time.so';
 INSTALL PLUGIN QUERY_RESPONSE_TIME_READ SONAME 'query_response_time.so';

@@ -34,7 +34,7 @@ services:
     image: ${PMM_CLIENT_IMAGE:-perconalab/pmm-client:dev-latest}
     container_name: pmm_pmm-client
     ports:
-      - "7777:7777"
+      - "7778:7777"
       # - "43000-43500:41000-41500"
     depends_on:
       - pmm-server
@@ -73,7 +73,7 @@ services:
       - UMASK=0777  # for slowlog file
     volumes:
       - /tmp/mysql/log:/tmp/mysql/log:rw
-      - ./docker-db-setup-scripts/docker_ps_5_7.sh:/docker-entrypoint-initdb.d/:rw
+      - ./docker-db-setup-scripts/ps_5_7:/docker-entrypoint-initdb.d/:rw
     networks:
       - pmm-network
 
@@ -96,7 +96,7 @@ services:
       - UMASK=0777  # for slowlog file
     volumes:
       - /tmp/mysql/log:/tmp/mysql/log
-      - ./docker-db-setup-scripts/docker_ps_8_0.sh:/docker-entrypoint-initdb.d/:rw
+      - ./docker-db-setup-scripts/ps_8_0:/docker-entrypoint-initdb.d/:rw
     networks:
       - pmm-network
 
@@ -138,7 +138,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=pmm-^*&@agent-password
     volumes:
-      - ./docker-db-setup-scripts/docker_postgres_13.sh:/docker-entrypoint-initdb.d/:rw
+      - ./docker-db-setup-scripts/postgres_13:/docker-entrypoint-initdb.d/:rw
     networks:
       - pmm-network
 
