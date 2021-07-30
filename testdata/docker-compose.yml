@@ -3,6 +3,7 @@ version: '3.7'
 
 volumes:
   pmm-server-data:
+  mysql-log:
 
 networks:
   pmm-network:
@@ -15,7 +16,7 @@ networks:
 services:
   pmm-server:
     image: ${PMM_SERVER_IMAGE:-perconalab/pmm-server:dev-latest}
-    container_name: pmm-server
+    container_name: pmm_pmm-server
     ports:
       - "80:80"
       - "443:443"
@@ -29,11 +30,35 @@ services:
     networks:
       - pmm-network
 
+  pmm-client:
+    image: ${PMM_CLIENT_IMAGE:-perconalab/pmm-client:dev-latest}
+    container_name: pmm_pmm-client
+    ports:
+      - "7777:7777"
+      # - "43000-43500:41000-41500"
+    depends_on:
+      - pmm-server
+    environment:
+      - PMM_AGENT_SETUP=1
+      - PMM_AGENT_SERVER_ADDRESS=pmm-server
+      - PMM_AGENT_SERVER_USERNAME=admin
+      - PMM_AGENT_SERVER_PASSWORD=admin
+      - PMM_AGENT_PORTS_MIN=41000
+      - PMM_AGENT_PORTS_MAX=41500
+      - PMM_AGENT_SERVER_INSECURE_TLS=1
+      - PMM_AGENT_CONFIG_FILE=config/pmm-agent.yaml
+      - PMM_AGENT_SETUP_NODE_NAME=${PMM_AGENT_SETUP_NODE_NAME:-pmm-client-container}
+      - PMM_AGENT_SETUP_FORCE=1
+      - PMM_AGENT_SETUP_NODE_TYPE=container
+      - PMM_AGENT_PRERUN_SCRIPT=${PMM_AGENT_PRERUN_SCRIPT}
+    networks:
+      - pmm-network
+
   # It is essential to have an extra directory `/slowlogs/` between host and container;
   # Otherwise, MySQL in Docker for Mac completely locks during/after slowlog rotation tests.
   mysql:
     image: ${MYSQL_IMAGE:-percona:5.7.30}
-    container_name: pmm-agent_mysql_5_7
+    container_name: pmm_mysql_5_7
     command: >
       --sql-mode="ANSI_QUOTES"
       --performance-schema --innodb_monitor_enable=all --userstat
@@ -54,8 +79,9 @@ services:
 
   mysql8:
     image: ${MYSQL_IMAGE:-percona:8.0}
-    container_name: pmm-agent_mysql_8_0
+    container_name: pmm_mysql_8_0
     command: >
+      --bind-address="0.0.0.0"
       --sql-mode="ANSI_QUOTES"
       --performance-schema --innodb_monitor_enable=all --userstat
       --slow_query_log --log_slow_rate_limit=1 --log_slow_admin_statements --log_slow_slave_statements --slow_query_log_file=/tmp/mysql/log/ps8_slow_log.log --long_query_time=0
@@ -66,6 +92,7 @@ services:
       - MYSQL_ROOT_PASSWORD=ps
       - MYSQL_USER=pmm-agent
       - MYSQL_PASSWORD=pmm-agent-password
+      - MYSQL_ROOT_HOST='%'  # needs to be enclosed with quotes
       - UMASK=0777  # for slowlog file
     volumes:
       - /tmp/mysql/log:/tmp/mysql/log
@@ -75,7 +102,7 @@ services:
 
   mongo:
     image: ${MONGO_IMAGE:-percona/percona-server-mongodb:4.2.8}
-    container_name: pmm-agent_mongo
+    container_name: pmm_mongo
     command: --profile 2
     ports:
       - "42100:27017"
@@ -87,7 +114,7 @@ services:
 
   mongonoauth:
     image: ${MONGO_IMAGE:-percona/percona-server-mongodb:4.2.8}
-    container_name: pmm-agent_mongonoauth
+    container_name: pmm_mongonoauth
     command: --profile 2
     ports:
       - "27019:27017"
@@ -96,7 +123,7 @@ services:
 
   postgres:
     image: ${POSTGRES_IMAGE:-perconalab/percona-distribution-postgresql:13.3}
-    container_name: pmm-agent_postgres
+    container_name: pmm_postgres
     command: >
       -c shared_preload_libraries=pg_stat_monitor,pg_stat_statements
       -c track_activity_query_size=2048
@@ -117,7 +144,7 @@ services:
 
   proxysql:
     image: ${PROXYSQL_IMAGE:-proxysql/proxysql:2.1.1}
-    container_name: pmm-agent_proxysql
+    container_name: pmm_proxysql
     ports:
       - "46032:6032"
       - "46033:6033"
@@ -129,7 +156,7 @@ services:
 
   sysbench:
     image: perconalab/sysbench
-    container_name: pmm-agent_sysbench
+    container_name: pmm_sysbench
     depends_on:
       - mysql
     networks:
