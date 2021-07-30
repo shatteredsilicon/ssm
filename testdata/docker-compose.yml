@@ -34,7 +34,7 @@ services:
     image: ${PMM_CLIENT_IMAGE:-perconalab/pmm-client:dev-latest}
     container_name: pmm_pmm-client
     ports:
-      - "7778:7777"
+      - "7777:7777"
       # - "43000-43500:41000-41500"
     depends_on:
       - pmm-server
@@ -51,6 +51,9 @@ services:
       - PMM_AGENT_SETUP_FORCE=1
       - PMM_AGENT_SETUP_NODE_TYPE=container
       - PMM_AGENT_PRERUN_SCRIPT=${PMM_AGENT_PRERUN_SCRIPT}
+    restart: on-failure
+    volumes:
+      - mysql-log:/tmp/mysql/log:rw
     networks:
       - pmm-network
 
@@ -72,8 +75,8 @@ services:
       - MYSQL_PASSWORD=pmm%*&agent-password
       - UMASK=0777  # for slowlog file
     volumes:
-      - /tmp/mysql/log:/tmp/mysql/log:rw
-      - ./docker-db-setup-scripts/ps_5_7:/docker-entrypoint-initdb.d/:rw
+      - mysql-log:/tmp/mysql/log:rw
+      - ./docker-db-setup-scripts/docker_ps_5_7.sh:/docker-entrypoint-initdb.d/:rw
     networks:
       - pmm-network
 
@@ -81,7 +84,6 @@ services:
     image: ${MYSQL_IMAGE:-percona:8.0}
     container_name: pmm_mysql_8_0
     command: >
-      --bind-address="0.0.0.0"
       --sql-mode="ANSI_QUOTES"
       --performance-schema --innodb_monitor_enable=all --userstat
       --slow_query_log --log_slow_rate_limit=1 --log_slow_admin_statements --log_slow_slave_statements --slow_query_log_file=/tmp/mysql/log/ps8_slow_log.log --long_query_time=0
@@ -95,8 +97,8 @@ services:
       - MYSQL_ROOT_HOST='%'  # needs to be enclosed with quotes
       - UMASK=0777  # for slowlog file
     volumes:
-      - /tmp/mysql/log:/tmp/mysql/log
-      - ./docker-db-setup-scripts/ps_8_0:/docker-entrypoint-initdb.d/:rw
+      - mysql-log:/tmp/mysql/log
+      - ./docker-db-setup-scripts/docker_ps_8_0.sh:/docker-entrypoint-initdb.d/:rw
     networks:
       - pmm-network
 
@@ -138,7 +140,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=pmm-^*&@agent-password
     volumes:
-      - ./docker-db-setup-scripts/postgres_13:/docker-entrypoint-initdb.d/:rw
+      - ./docker-db-setup-scripts/docker_postgres_13.sh:/docker-entrypoint-initdb.d/:rw
     networks:
       - pmm-network
 
