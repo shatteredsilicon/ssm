@@ -48,6 +48,7 @@ services:
       - UMASK=0777  # for slowlog file
     volumes:
       - /tmp/mysql/log:/tmp/mysql/log:rw
+      - ./docker-db-setup-scripts/docker_ps_5_7.sh:/docker-entrypoint-initdb.d/:rw
     networks:
       - pmm-network
 
@@ -68,6 +69,7 @@ services:
       - UMASK=0777  # for slowlog file
     volumes:
       - /tmp/mysql/log:/tmp/mysql/log
+      - ./docker-db-setup-scripts/docker_ps_8_0.sh:/docker-entrypoint-initdb.d/:rw
     networks:
       - pmm-network
 
@@ -108,6 +110,8 @@ services:
       - "42200:5432"
     environment:
       - POSTGRES_PASSWORD=pmm-^*&@agent-password
+    volumes:
+      - ./docker-db-setup-scripts/docker_postgres_13.sh:/docker-entrypoint-initdb.d/:rw
     networks:
       - pmm-network
 
@@ -119,7 +123,7 @@ services:
       - "46033:6033"
       - "46070:6070"
     volumes:
-      - ${PWD}/testdata/proxysql/proxysql.cnf:/etc/proxysql.cnf:rw
+      - ${PWD}/proxysql/proxysql.cnf:/etc/proxysql.cnf:rw
     networks:
       - pmm-network
 
