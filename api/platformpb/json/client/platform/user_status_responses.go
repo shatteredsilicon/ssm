@@ -122,9 +122,6 @@ swagger:model UserStatusDefaultBody
 */
 type UserStatusDefaultBody struct {
 
-	// error
-	Error string `json:"error,omitempty"`
-
 	// code
 	Code int32 `json:"code,omitempty"`
 
@@ -198,7 +195,7 @@ swagger:model UserStatusOKBody
 type UserStatusOKBody struct {
 
 	// is platform user
-	IsPlatformUser bool `json:"is_platform_user,omitempty"`
+	IsPlatformUser bool `json:"isPlatformUser,omitempty"`
 }
 
 // Validate validates this user status OK body

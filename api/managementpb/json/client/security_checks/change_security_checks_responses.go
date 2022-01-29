@@ -188,9 +188,6 @@ swagger:model ChangeSecurityChecksDefaultBody
 */
 type ChangeSecurityChecksDefaultBody struct {
 
-	// error
-	Error string `json:"error,omitempty"`
-
 	// code
 	Code int32 `json:"code,omitempty"`
 
@@ -263,8 +260,8 @@ swagger:model DetailsItems0
 */
 type DetailsItems0 struct {
 
-	// type url
-	TypeURL string `json:"type_url,omitempty"`
+	// type Url
+	TypeURL string `json:"typeUrl,omitempty"`
 
 	// value
 	// Format: byte

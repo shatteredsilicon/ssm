@@ -122,8 +122,8 @@ swagger:model DetailsItems0
 */
 type DetailsItems0 struct {
 
-	// type url
-	TypeURL string `json:"type_url,omitempty"`
+	// type Url
+	TypeURL string `json:"typeUrl,omitempty"`
 
 	// value
 	// Format: byte
@@ -157,9 +157,6 @@ func (o *DetailsItems0) UnmarshalBinary(b []byte) error {
 swagger:model GetMetricsNamesDefaultBody
 */
 type GetMetricsNamesDefaultBody struct {
-
-	// error
-	Error string `json:"error,omitempty"`
 
 	// code
 	Code int32 `json:"code,omitempty"`

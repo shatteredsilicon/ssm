@@ -122,9 +122,6 @@ swagger:model ServerInfoDefaultBody
 */
 type ServerInfoDefaultBody struct {
 
-	// error
-	Error string `json:"error,omitempty"`
-
 	// code
 	Code int32 `json:"code,omitempty"`
 
@@ -198,10 +195,10 @@ swagger:model ServerInfoOKBody
 type ServerInfoOKBody struct {
 
 	// pmm server name
-	PMMServerName string `json:"pmm_server_name,omitempty"`
+	PMMServerName string `json:"pmmServerName,omitempty"`
 
-	// pmm server id
-	PMMServerID string `json:"pmm_server_id,omitempty"`
+	// pmm server Id
+	PMMServerID string `json:"pmmServerId,omitempty"`
 }
 
 // Validate validates this server info OK body

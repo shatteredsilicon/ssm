@@ -122,8 +122,8 @@ swagger:model DetailsItems0
 */
 type DetailsItems0 struct {
 
-	// type url
-	TypeURL string `json:"type_url,omitempty"`
+	// type Url
+	TypeURL string `json:"typeUrl,omitempty"`
 
 	// value
 	// Format: byte
@@ -159,10 +159,10 @@ swagger:model GetLogsBody
 type GetLogsBody struct {
 
 	// Kubernetes cluster name.
-	KubernetesClusterName string `json:"kubernetes_cluster_name,omitempty"`
+	KubernetesClusterName string `json:"kubernetesClusterName,omitempty"`
 
 	// DB cluster name.
-	ClusterName string `json:"cluster_name,omitempty"`
+	ClusterName string `json:"clusterName,omitempty"`
 }
 
 // Validate validates this get logs body
@@ -192,9 +192,6 @@ func (o *GetLogsBody) UnmarshalBinary(b []byte) error {
 swagger:model GetLogsDefaultBody
 */
 type GetLogsDefaultBody struct {
-
-	// error
-	Error string `json:"error,omitempty"`
 
 	// code
 	Code int32 `json:"code,omitempty"`

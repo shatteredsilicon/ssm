@@ -124,11 +124,11 @@ swagger:model GetFailedChecksBody
 */
 type GetFailedChecksBody struct {
 
-	// service id
-	ServiceID string `json:"service_id,omitempty"`
+	// service Id
+	ServiceID string `json:"serviceId,omitempty"`
 
 	// page params
-	PageParams *GetFailedChecksParamsBodyPageParams `json:"page_params,omitempty"`
+	PageParams *GetFailedChecksParamsBodyPageParams `json:"pageParams,omitempty"`
 }
 
 // Validate validates this get failed checks body
@@ -154,7 +154,7 @@ func (o *GetFailedChecksBody) validatePageParams(formats strfmt.Registry) error 
 	if o.PageParams != nil {
 		if err := o.PageParams.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("body" + "." + "page_params")
+				return ve.ValidateName("body" + "." + "pageParams")
 			}
 			return err
 		}
@@ -185,9 +185,6 @@ func (o *GetFailedChecksBody) UnmarshalBinary(b []byte) error {
 swagger:model GetFailedChecksDefaultBody
 */
 type GetFailedChecksDefaultBody struct {
-
-	// error
-	Error string `json:"error,omitempty"`
 
 	// code
 	Code int32 `json:"code,omitempty"`
@@ -265,7 +262,7 @@ type GetFailedChecksOKBody struct {
 	Results []*ResultsItems0 `json:"results"`
 
 	// page totals
-	PageTotals *GetFailedChecksOKBodyPageTotals `json:"page_totals,omitempty"`
+	PageTotals *GetFailedChecksOKBodyPageTotals `json:"pageTotals,omitempty"`
 }
 
 // Validate validates this get failed checks OK body
@@ -320,7 +317,7 @@ func (o *GetFailedChecksOKBody) validatePageTotals(formats strfmt.Registry) erro
 	if o.PageTotals != nil {
 		if err := o.PageTotals.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("getFailedChecksOk" + "." + "page_totals")
+				return ve.ValidateName("getFailedChecksOk" + "." + "pageTotals")
 			}
 			return err
 		}
@@ -353,10 +350,10 @@ swagger:model GetFailedChecksOKBodyPageTotals
 type GetFailedChecksOKBodyPageTotals struct {
 
 	// Total number of results.
-	TotalItems int32 `json:"total_items,omitempty"`
+	TotalItems int32 `json:"totalItems,omitempty"`
 
 	// Total number of pages.
-	TotalPages int32 `json:"total_pages,omitempty"`
+	TotalPages int32 `json:"totalPages,omitempty"`
 }
 
 // Validate validates this get failed checks OK body page totals
@@ -388,7 +385,7 @@ swagger:model GetFailedChecksParamsBodyPageParams
 type GetFailedChecksParamsBodyPageParams struct {
 
 	// Maximum number of results per page.
-	PageSize int32 `json:"page_size,omitempty"`
+	PageSize int32 `json:"pageSize,omitempty"`
 
 	// Index of the requested page, starts from 0.
 	Index int32 `json:"index,omitempty"`
@@ -436,19 +433,19 @@ type ResultsItems0 struct {
 	Labels map[string]string `json:"labels,omitempty"`
 
 	// URL containing information on how to resolve an issue detected by an STT check.
-	ReadMoreURL string `json:"read_more_url,omitempty"`
+	ReadMoreURL string `json:"readMoreUrl,omitempty"`
 
 	// Name of the monitored service on which the check ran.
-	ServiceName string `json:"service_name,omitempty"`
+	ServiceName string `json:"serviceName,omitempty"`
 
 	// ID of the monitored service on which the check ran.
-	ServiceID string `json:"service_id,omitempty"`
+	ServiceID string `json:"serviceId,omitempty"`
 
 	// Name of the check that failed
-	CheckName string `json:"check_name,omitempty"`
+	CheckName string `json:"checkName,omitempty"`
 
 	// ID of the check result as stored in AlertManager
-	AlertID string `json:"alert_id,omitempty"`
+	AlertID string `json:"alertId,omitempty"`
 
 	// Silence status of the check result
 	Silenced bool `json:"silenced,omitempty"`

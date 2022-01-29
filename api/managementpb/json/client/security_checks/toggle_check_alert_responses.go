@@ -121,7 +121,7 @@ swagger:model ToggleCheckAlertBody
 type ToggleCheckAlertBody struct {
 
 	// Alert ID of the check result.
-	AlertID string `json:"alert_id,omitempty"`
+	AlertID string `json:"alertId,omitempty"`
 
 	// Silence the check result if set to true, unsilence otherwise.
 	Silence bool `json:"silence,omitempty"`
@@ -154,9 +154,6 @@ func (o *ToggleCheckAlertBody) UnmarshalBinary(b []byte) error {
 swagger:model ToggleCheckAlertDefaultBody
 */
 type ToggleCheckAlertDefaultBody struct {
-
-	// error
-	Error string `json:"error,omitempty"`
 
 	// code
 	Code int32 `json:"code,omitempty"`

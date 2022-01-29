@@ -41,12 +41,12 @@
                   "type": "string",
                   "x-order": 2
                 },
-                "personal_access_token": {
+                "personalAccessToken": {
                   "description": "Personal Access Token that the user obtains from Percona Portal.",
                   "type": "string",
                   "x-order": 3
                 },
-                "server_name": {
+                "serverName": {
                   "description": "User defined human readable PMM Server Name.",
                   "type": "string",
                   "x-order": 0
@@ -70,14 +70,14 @@
                 "code": {
                   "type": "integer",
                   "format": "int32",
-                  "x-order": 1
+                  "x-order": 0
                 },
                 "details": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "type_url": {
+                      "typeUrl": {
                         "type": "string",
                         "x-order": 0
                       },
@@ -88,15 +88,11 @@
                       }
                     }
                   },
-                  "x-order": 3
-                },
-                "error": {
-                  "type": "string",
-                  "x-order": 0
+                  "x-order": 2
                 },
                 "message": {
                   "type": "string",
-                  "x-order": 2
+                  "x-order": 1
                 }
               }
             }
@@ -137,14 +133,14 @@
                 "code": {
                   "type": "integer",
                   "format": "int32",
-                  "x-order": 1
+                  "x-order": 0
                 },
                 "details": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "type_url": {
+                      "typeUrl": {
                         "type": "string",
                         "x-order": 0
                       },
@@ -155,15 +151,11 @@
                       }
                     }
                   },
-                  "x-order": 3
-                },
-                "error": {
-                  "type": "string",
-                  "x-order": 0
+                  "x-order": 2
                 },
                 "message": {
                   "type": "string",
-                  "x-order": 2
+                  "x-order": 1
                 }
               }
             }
@@ -201,7 +193,7 @@
                     "description": "OrganizationEntitlement contains information about Organization entitlement.",
                     "type": "object",
                     "properties": {
-                      "end_date": {
+                      "endDate": {
                         "description": "Entitlement end date.\nNote: only date is used here but not time.",
                         "type": "string",
                         "format": "date-time",
@@ -221,12 +213,12 @@
                         "description": "Platform indicates platform specific entitlements.",
                         "type": "object",
                         "properties": {
-                          "config_advisor": {
+                          "configAdvisor": {
                             "description": "Flag indicates that config advisors are covered by this entitlement.",
                             "type": "string",
                             "x-order": 1
                           },
-                          "security_advisor": {
+                          "securityAdvisor": {
                             "description": "Flag indicates that security advisors are covered by this entitlement.",
                             "type": "string",
                             "x-order": 0
@@ -234,7 +226,7 @@
                         },
                         "x-order": 10
                       },
-                      "software_families": {
+                      "softwareFamilies": {
                         "description": "Percona product families covered by this entitlement.",
                         "type": "array",
                         "items": {
@@ -242,7 +234,7 @@
                         },
                         "x-order": 7
                       },
-                      "start_date": {
+                      "startDate": {
                         "description": "Entitlement start data.\nNote: only date is used here but not time.",
                         "type": "string",
                         "format": "date-time",
@@ -253,7 +245,7 @@
                         "type": "string",
                         "x-order": 2
                       },
-                      "support_level": {
+                      "supportLevel": {
                         "description": "Support level covered by this entitlement.",
                         "type": "string",
                         "x-order": 6
@@ -263,12 +255,12 @@
                         "type": "string",
                         "x-order": 3
                       },
-                      "total_units": {
+                      "totalUnits": {
                         "description": "Total units covered by this entitlement.",
                         "type": "string",
                         "x-order": 4
                       },
-                      "unlimited_units": {
+                      "unlimitedUnits": {
                         "description": "Flag indicates that unlimited units are covered.",
                         "type": "boolean",
                         "x-order": 5
@@ -288,14 +280,14 @@
                 "code": {
                   "type": "integer",
                   "format": "int32",
-                  "x-order": 1
+                  "x-order": 0
                 },
                 "details": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "type_url": {
+                      "typeUrl": {
                         "type": "string",
                         "x-order": 0
                       },
@@ -306,15 +298,11 @@
                       }
                     }
                   },
-                  "x-order": 3
-                },
-                "error": {
-                  "type": "string",
-                  "x-order": 0
+                  "x-order": 2
                 },
                 "message": {
                   "type": "string",
-                  "x-order": 2
+                  "x-order": 1
                 }
               }
             }
@@ -353,7 +341,7 @@
                     "description": "OrganizationTicket contains information about the support ticket.",
                     "type": "object",
                     "properties": {
-                      "create_time": {
+                      "createTime": {
                         "description": "Ticket creation time.",
                         "type": "string",
                         "format": "date-time",
@@ -379,7 +367,7 @@
                         "type": "string",
                         "x-order": 6
                       },
-                      "short_description": {
+                      "shortDescription": {
                         "description": "Ticket short description.",
                         "type": "string",
                         "x-order": 1
@@ -389,7 +377,7 @@
                         "type": "string",
                         "x-order": 3
                       },
-                      "task_type": {
+                      "taskType": {
                         "description": "Task type.",
                         "type": "string",
                         "x-order": 7
@@ -414,14 +402,14 @@
                 "code": {
                   "type": "integer",
                   "format": "int32",
-                  "x-order": 1
+                  "x-order": 0
                 },
                 "details": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "type_url": {
+                      "typeUrl": {
                         "type": "string",
                         "x-order": 0
                       },
@@ -432,15 +420,11 @@
                       }
                     }
                   },
-                  "x-order": 3
-                },
-                "error": {
-                  "type": "string",
-                  "x-order": 0
+                  "x-order": 2
                 },
                 "message": {
                   "type": "string",
-                  "x-order": 2
+                  "x-order": 1
                 }
               }
             }
@@ -472,11 +456,11 @@
             "schema": {
               "type": "object",
               "properties": {
-                "pmm_server_id": {
+                "pmmServerId": {
                   "type": "string",
                   "x-order": 1
                 },
-                "pmm_server_name": {
+                "pmmServerName": {
                   "type": "string",
                   "x-order": 0
                 }
@@ -491,14 +475,14 @@
                 "code": {
                   "type": "integer",
                   "format": "int32",
-                  "x-order": 1
+                  "x-order": 0
                 },
                 "details": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "type_url": {
+                      "typeUrl": {
                         "type": "string",
                         "x-order": 0
                       },
@@ -509,15 +493,11 @@
                       }
                     }
                   },
-                  "x-order": 3
-                },
-                "error": {
-                  "type": "string",
-                  "x-order": 0
+                  "x-order": 2
                 },
                 "message": {
                   "type": "string",
-                  "x-order": 2
+                  "x-order": 1
                 }
               }
             }
@@ -549,7 +529,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "is_platform_user": {
+                "isPlatformUser": {
                   "type": "boolean",
                   "x-order": 0
                 }
@@ -564,14 +544,14 @@
                 "code": {
                   "type": "integer",
                   "format": "int32",
-                  "x-order": 1
+                  "x-order": 0
                 },
                 "details": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "type_url": {
+                      "typeUrl": {
                         "type": "string",
                         "x-order": 0
                       },
@@ -582,15 +562,11 @@
                       }
                     }
                   },
-                  "x-order": 3
-                },
-                "error": {
-                  "type": "string",
-                  "x-order": 0
+                  "x-order": 2
                 },
                 "message": {
                   "type": "string",
-                  "x-order": 2
+                  "x-order": 1
                 }
               }
             }
@@ -598,5 +574,10 @@
         }
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Platform"
+    }
+  ]
 }
