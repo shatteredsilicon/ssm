@@ -13,7 +13,7 @@ require (
 	github.com/go-swagger/go-swagger v0.24.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.2.0
 	github.com/mwitkow/go-proto-validators v0.3.2
-	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0
+	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.2.0
 	google.golang.org/protobuf v1.27.1
 )
 
