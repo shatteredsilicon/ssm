@@ -261,34 +261,34 @@ swagger:model ResultItems0
 type ResultItems0 struct {
 
 	// service name
-	ServiceName string `json:"serviceName,omitempty"`
+	ServiceName string `json:"service_name,omitempty"`
 
-	// service Id
-	ServiceID string `json:"serviceId,omitempty"`
+	// service id
+	ServiceID string `json:"service_id,omitempty"`
 
 	// Number of failed checks for this service with severity level "EMERGENCY".
-	EmergencyCount int64 `json:"emergencyCount,omitempty"`
+	EmergencyCount int64 `json:"emergency_count,omitempty"`
 
 	// Number of failed checks for this service with severity level "ALERT".
-	AlertCount int64 `json:"alertCount,omitempty"`
+	AlertCount int64 `json:"alert_count,omitempty"`
 
 	// Number of failed checks for this service with severity level "CRITICAL".
-	CriticalCount int64 `json:"criticalCount,omitempty"`
+	CriticalCount int64 `json:"critical_count,omitempty"`
 
 	// Number of failed checks for this service with severity level "ERROR".
-	ErrorCount int64 `json:"errorCount,omitempty"`
+	ErrorCount int64 `json:"error_count,omitempty"`
 
 	// Number of failed checks for this service with severity level "WARNING".
-	WarningCount int64 `json:"warningCount,omitempty"`
+	WarningCount int64 `json:"warning_count,omitempty"`
 
 	// Number of failed checks for this service with severity level "NOTICE".
-	NoticeCount int64 `json:"noticeCount,omitempty"`
+	NoticeCount int64 `json:"notice_count,omitempty"`
 
 	// Number of failed checks for this service with severity level "INFO".
-	InfoCount int64 `json:"infoCount,omitempty"`
+	InfoCount int64 `json:"info_count,omitempty"`
 
 	// Number of failed checks for this service with severity level "DEBUG".
-	DebugCount int64 `json:"debugCount,omitempty"`
+	DebugCount int64 `json:"debug_count,omitempty"`
 }
 
 // Validate validates this result items0

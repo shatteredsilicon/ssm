@@ -122,8 +122,8 @@ swagger:model DetailsItems0
 */
 type DetailsItems0 struct {
 
-	// type Url
-	TypeURL string `json:"typeUrl,omitempty"`
+	// type url
+	TypeURL string `json:"type_url,omitempty"`
 
 	// value
 	// Format: byte
@@ -160,14 +160,14 @@ type RemoveServiceBody struct {
 
 	// ServiceType describes supported Service types.
 	// Enum: [SERVICE_TYPE_INVALID MYSQL_SERVICE MONGODB_SERVICE POSTGRESQL_SERVICE PROXYSQL_SERVICE HAPROXY_SERVICE EXTERNAL_SERVICE]
-	ServiceType *string `json:"serviceType,omitempty"`
+	ServiceType *string `json:"service_type,omitempty"`
 
 	// Service ID or Service Name is required.
 	// Unique randomly generated instance identifier.
-	ServiceID string `json:"serviceId,omitempty"`
+	ServiceID string `json:"service_id,omitempty"`
 
 	// Unique across all Services user-defined name.
-	ServiceName string `json:"serviceName,omitempty"`
+	ServiceName string `json:"service_name,omitempty"`
 }
 
 // Validate validates this remove service body
@@ -235,7 +235,7 @@ func (o *RemoveServiceBody) validateServiceType(formats strfmt.Registry) error {
 	}
 
 	// value enum
-	if err := o.validateServiceTypeEnum("body"+"."+"serviceType", "body", *o.ServiceType); err != nil {
+	if err := o.validateServiceTypeEnum("body"+"."+"service_type", "body", *o.ServiceType); err != nil {
 		return err
 	}
 

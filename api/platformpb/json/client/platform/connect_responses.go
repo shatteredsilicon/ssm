@@ -121,7 +121,7 @@ swagger:model ConnectBody
 type ConnectBody struct {
 
 	// User defined human readable PMM Server Name.
-	ServerName string `json:"serverName,omitempty"`
+	ServerName string `json:"server_name,omitempty"`
 
 	// Existing Percona Platform user's email.
 	Email string `json:"email,omitempty"`
@@ -130,7 +130,7 @@ type ConnectBody struct {
 	Password string `json:"password,omitempty"`
 
 	// Personal Access Token that the user obtains from Percona Portal.
-	PersonalAccessToken string `json:"personalAccessToken,omitempty"`
+	PersonalAccessToken string `json:"personal_access_token,omitempty"`
 }
 
 // Validate validates this connect body
@@ -233,8 +233,8 @@ swagger:model DetailsItems0
 */
 type DetailsItems0 struct {
 
-	// type Url
-	TypeURL string `json:"typeUrl,omitempty"`
+	// type url
+	TypeURL string `json:"type_url,omitempty"`
 
 	// value
 	// Format: byte

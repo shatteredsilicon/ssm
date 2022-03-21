@@ -195,10 +195,10 @@ swagger:model ServerInfoOKBody
 type ServerInfoOKBody struct {
 
 	// pmm server name
-	PMMServerName string `json:"pmmServerName,omitempty"`
+	PMMServerName string `json:"pmm_server_name,omitempty"`
 
-	// pmm server Id
-	PMMServerID string `json:"pmmServerId,omitempty"`
+	// pmm server id
+	PMMServerID string `json:"pmm_server_id,omitempty"`
 }
 
 // Validate validates this server info OK body

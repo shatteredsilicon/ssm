@@ -121,7 +121,7 @@ swagger:model AWSInstanceCheckBody
 type AWSInstanceCheckBody struct {
 
 	// AWS EC2 instance ID (i-1234567890abcdef0).
-	InstanceID string `json:"instanceId,omitempty"`
+	InstanceID string `json:"instance_id,omitempty"`
 }
 
 // Validate validates this AWS instance check body
@@ -224,8 +224,8 @@ swagger:model DetailsItems0
 */
 type DetailsItems0 struct {
 
-	// type Url
-	TypeURL string `json:"typeUrl,omitempty"`
+	// type url
+	TypeURL string `json:"type_url,omitempty"`
 
 	// value
 	// Format: byte

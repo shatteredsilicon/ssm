@@ -55,7 +55,7 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "typeUrl": {
+                      "type_url": {
                         "type": "string",
                         "x-order": 0
                       },
@@ -89,7 +89,7 @@
           {
             "type": "boolean",
             "description": "Returns network info (latency and clock_drift) if true.",
-            "name": "getNetworkInfo",
+            "name": "get_network_info",
             "in": "query"
           }
         ],
@@ -99,26 +99,26 @@
             "schema": {
               "type": "object",
               "properties": {
-                "agentId": {
+                "agent_id": {
                   "type": "string",
                   "x-order": 0
                 },
-                "agentVersion": {
+                "agent_version": {
                   "description": "PMM Agent version.",
                   "type": "string",
                   "x-order": 5
                 },
-                "agentsInfo": {
+                "agents_info": {
                   "type": "array",
                   "items": {
                     "description": "AgentInfo contains information about Agent managed by pmm-agent.",
                     "type": "object",
                     "properties": {
-                      "agentId": {
+                      "agent_id": {
                         "type": "string",
                         "x-order": 0
                       },
-                      "agentType": {
+                      "agent_type": {
                         "description": "AgentType describes supported Agent types.",
                         "type": "string",
                         "default": "AGENT_TYPE_INVALID",
@@ -142,7 +142,7 @@
                         ],
                         "x-order": 1
                       },
-                      "listenPort": {
+                      "listen_port": {
                         "description": "The current listen port of this Agent (exporter or vmagent).\nZero for other Agent types, or if unknown or not yet supported.",
                         "type": "integer",
                         "format": "int64",
@@ -167,20 +167,20 @@
                   },
                   "x-order": 3
                 },
-                "configFilepath": {
+                "config_filepath": {
                   "description": "Config file path if pmm-agent was started with one.",
                   "type": "string",
                   "x-order": 4
                 },
-                "runsOnNodeId": {
+                "runs_on_node_id": {
                   "type": "string",
                   "x-order": 1
                 },
-                "serverInfo": {
+                "server_info": {
                   "description": "ServerInfo contains information about the PMM Server.",
                   "type": "object",
                   "properties": {
-                    "clockDrift": {
+                    "clock_drift": {
                       "description": "Clock drift from PMM Server (if agent is connected).",
                       "type": "string",
                       "x-order": 5
@@ -190,7 +190,7 @@
                       "type": "boolean",
                       "x-order": 2
                     },
-                    "insecureTls": {
+                    "insecure_tls": {
                       "description": "PMM Server's TLS certificate validation should be skipped if true.",
                       "type": "boolean",
                       "x-order": 1
@@ -231,7 +231,7 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "typeUrl": {
+                      "type_url": {
                         "type": "string",
                         "x-order": 0
                       },
@@ -267,7 +267,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "getNetworkInfo": {
+                "get_network_info": {
                   "description": "Returns network info (latency and clock_drift) if true.",
                   "type": "boolean",
                   "x-order": 0
@@ -282,26 +282,26 @@
             "schema": {
               "type": "object",
               "properties": {
-                "agentId": {
+                "agent_id": {
                   "type": "string",
                   "x-order": 0
                 },
-                "agentVersion": {
+                "agent_version": {
                   "description": "PMM Agent version.",
                   "type": "string",
                   "x-order": 5
                 },
-                "agentsInfo": {
+                "agents_info": {
                   "type": "array",
                   "items": {
                     "description": "AgentInfo contains information about Agent managed by pmm-agent.",
                     "type": "object",
                     "properties": {
-                      "agentId": {
+                      "agent_id": {
                         "type": "string",
                         "x-order": 0
                       },
-                      "agentType": {
+                      "agent_type": {
                         "description": "AgentType describes supported Agent types.",
                         "type": "string",
                         "default": "AGENT_TYPE_INVALID",
@@ -325,7 +325,7 @@
                         ],
                         "x-order": 1
                       },
-                      "listenPort": {
+                      "listen_port": {
                         "description": "The current listen port of this Agent (exporter or vmagent).\nZero for other Agent types, or if unknown or not yet supported.",
                         "type": "integer",
                         "format": "int64",
@@ -350,20 +350,20 @@
                   },
                   "x-order": 3
                 },
-                "configFilepath": {
+                "config_filepath": {
                   "description": "Config file path if pmm-agent was started with one.",
                   "type": "string",
                   "x-order": 4
                 },
-                "runsOnNodeId": {
+                "runs_on_node_id": {
                   "type": "string",
                   "x-order": 1
                 },
-                "serverInfo": {
+                "server_info": {
                   "description": "ServerInfo contains information about the PMM Server.",
                   "type": "object",
                   "properties": {
-                    "clockDrift": {
+                    "clock_drift": {
                       "description": "Clock drift from PMM Server (if agent is connected).",
                       "type": "string",
                       "x-order": 5
@@ -373,7 +373,7 @@
                       "type": "boolean",
                       "x-order": 2
                     },
-                    "insecureTls": {
+                    "insecure_tls": {
                       "description": "PMM Server's TLS certificate validation should be skipped if true.",
                       "type": "boolean",
                       "x-order": 1
@@ -414,7 +414,7 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "typeUrl": {
+                      "type_url": {
                         "type": "string",
                         "x-order": 0
                       },

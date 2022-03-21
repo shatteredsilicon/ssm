@@ -127,10 +127,10 @@ type AddAnnotationBody struct {
 	Tags []string `json:"tags"`
 
 	// Used for annotate node.
-	NodeName string `json:"nodeName,omitempty"`
+	NodeName string `json:"node_name,omitempty"`
 
 	// Used for annotate services.
-	ServiceNames []string `json:"serviceNames"`
+	ServiceNames []string `json:"service_names"`
 }
 
 // Validate validates this add annotation body
@@ -233,8 +233,8 @@ swagger:model DetailsItems0
 */
 type DetailsItems0 struct {
 
-	// type Url
-	TypeURL string `json:"typeUrl,omitempty"`
+	// type url
+	TypeURL string `json:"type_url,omitempty"`
 
 	// value
 	// Format: byte

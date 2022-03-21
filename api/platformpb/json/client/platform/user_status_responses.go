@@ -195,7 +195,7 @@ swagger:model UserStatusOKBody
 type UserStatusOKBody struct {
 
 	// is platform user
-	IsPlatformUser bool `json:"isPlatformUser,omitempty"`
+	IsPlatformUser bool `json:"is_platform_user,omitempty"`
 }
 
 // Validate validates this user status OK body

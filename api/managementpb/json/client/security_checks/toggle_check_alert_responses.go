@@ -121,7 +121,7 @@ swagger:model ToggleCheckAlertBody
 type ToggleCheckAlertBody struct {
 
 	// Alert ID of the check result.
-	AlertID string `json:"alertId,omitempty"`
+	AlertID string `json:"alert_id,omitempty"`
 
 	// Silence the check result if set to true, unsilence otherwise.
 	Silence bool `json:"silence,omitempty"`

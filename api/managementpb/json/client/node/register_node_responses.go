@@ -124,8 +124,8 @@ swagger:model DetailsItems0
 */
 type DetailsItems0 struct {
 
-	// type Url
-	TypeURL string `json:"typeUrl,omitempty"`
+	// type url
+	TypeURL string `json:"type_url,omitempty"`
 
 	// value
 	// Format: byte
@@ -162,28 +162,28 @@ type RegisterNodeBody struct {
 
 	// NodeType describes supported Node types.
 	// Enum: [NODE_TYPE_INVALID GENERIC_NODE CONTAINER_NODE REMOTE_NODE REMOTE_RDS_NODE REMOTE_AZURE_DATABASE_NODE]
-	NodeType *string `json:"nodeType,omitempty"`
+	NodeType *string `json:"node_type,omitempty"`
 
 	// Unique across all Nodes user-defined name.
-	NodeName string `json:"nodeName,omitempty"`
+	NodeName string `json:"node_name,omitempty"`
 
 	// Node address (DNS name or IP).
 	Address string `json:"address,omitempty"`
 
 	// Linux machine-id.
-	MachineID string `json:"machineId,omitempty"`
+	MachineID string `json:"machine_id,omitempty"`
 
 	// Linux distribution name and version.
 	Distro string `json:"distro,omitempty"`
 
 	// Container identifier. If specified, must be a unique Docker container identifier.
-	ContainerID string `json:"containerId,omitempty"`
+	ContainerID string `json:"container_id,omitempty"`
 
 	// Container name.
-	ContainerName string `json:"containerName,omitempty"`
+	ContainerName string `json:"container_name,omitempty"`
 
 	// Node model.
-	NodeModel string `json:"nodeModel,omitempty"`
+	NodeModel string `json:"node_model,omitempty"`
 
 	// Node region.
 	Region string `json:"region,omitempty"`
@@ -192,7 +192,7 @@ type RegisterNodeBody struct {
 	Az string `json:"az,omitempty"`
 
 	// Custom user-assigned labels for Node.
-	CustomLabels map[string]string `json:"customLabels,omitempty"`
+	CustomLabels map[string]string `json:"custom_labels,omitempty"`
 
 	// If true, and Node with that name already exist, it will be removed with all dependent Services and Agents.
 	Reregister bool `json:"reregister,omitempty"`
@@ -200,10 +200,10 @@ type RegisterNodeBody struct {
 	// MetricsMode defines desired metrics mode for agent,
 	// it can be pull, push or auto mode chosen by server.
 	// Enum: [AUTO PULL PUSH]
-	MetricsMode *string `json:"metricsMode,omitempty"`
+	MetricsMode *string `json:"metrics_mode,omitempty"`
 
 	// List of collector names to disable in this exporter.
-	DisableCollectors []string `json:"disableCollectors"`
+	DisableCollectors []string `json:"disable_collectors"`
 }
 
 // Validate validates this register node body
@@ -272,7 +272,7 @@ func (o *RegisterNodeBody) validateNodeType(formats strfmt.Registry) error {
 	}
 
 	// value enum
-	if err := o.validateNodeTypeEnum("body"+"."+"nodeType", "body", *o.NodeType); err != nil {
+	if err := o.validateNodeTypeEnum("body"+"."+"node_type", "body", *o.NodeType); err != nil {
 		return err
 	}
 
@@ -318,7 +318,7 @@ func (o *RegisterNodeBody) validateMetricsMode(formats strfmt.Registry) error {
 	}
 
 	// value enum
-	if err := o.validateMetricsModeEnum("body"+"."+"metricsMode", "body", *o.MetricsMode); err != nil {
+	if err := o.validateMetricsModeEnum("body"+"."+"metrics_mode", "body", *o.MetricsMode); err != nil {
 		return err
 	}
 
@@ -421,13 +421,13 @@ swagger:model RegisterNodeOKBody
 type RegisterNodeOKBody struct {
 
 	// container node
-	ContainerNode *RegisterNodeOKBodyContainerNode `json:"containerNode,omitempty"`
+	ContainerNode *RegisterNodeOKBodyContainerNode `json:"container_node,omitempty"`
 
 	// generic node
-	GenericNode *RegisterNodeOKBodyGenericNode `json:"genericNode,omitempty"`
+	GenericNode *RegisterNodeOKBodyGenericNode `json:"generic_node,omitempty"`
 
 	// pmm agent
-	PMMAgent *RegisterNodeOKBodyPMMAgent `json:"pmmAgent,omitempty"`
+	PMMAgent *RegisterNodeOKBodyPMMAgent `json:"pmm_agent,omitempty"`
 }
 
 // Validate validates this register node OK body
@@ -461,7 +461,7 @@ func (o *RegisterNodeOKBody) validateContainerNode(formats strfmt.Registry) erro
 	if o.ContainerNode != nil {
 		if err := o.ContainerNode.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("registerNodeOk" + "." + "containerNode")
+				return ve.ValidateName("registerNodeOk" + "." + "container_node")
 			}
 			return err
 		}
@@ -479,7 +479,7 @@ func (o *RegisterNodeOKBody) validateGenericNode(formats strfmt.Registry) error 
 	if o.GenericNode != nil {
 		if err := o.GenericNode.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("registerNodeOk" + "." + "genericNode")
+				return ve.ValidateName("registerNodeOk" + "." + "generic_node")
 			}
 			return err
 		}
@@ -497,7 +497,7 @@ func (o *RegisterNodeOKBody) validatePMMAgent(formats strfmt.Registry) error {
 	if o.PMMAgent != nil {
 		if err := o.PMMAgent.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("registerNodeOk" + "." + "pmmAgent")
+				return ve.ValidateName("registerNodeOk" + "." + "pmm_agent")
 			}
 			return err
 		}
@@ -530,25 +530,25 @@ swagger:model RegisterNodeOKBodyContainerNode
 type RegisterNodeOKBodyContainerNode struct {
 
 	// Unique randomly generated instance identifier.
-	NodeID string `json:"nodeId,omitempty"`
+	NodeID string `json:"node_id,omitempty"`
 
 	// Unique across all Nodes user-defined name.
-	NodeName string `json:"nodeName,omitempty"`
+	NodeName string `json:"node_name,omitempty"`
 
 	// Node address (DNS name or IP).
 	Address string `json:"address,omitempty"`
 
 	// Linux machine-id of the Generic Node where this Container Node runs.
-	MachineID string `json:"machineId,omitempty"`
+	MachineID string `json:"machine_id,omitempty"`
 
 	// Container identifier. If specified, must be a unique Docker container identifier.
-	ContainerID string `json:"containerId,omitempty"`
+	ContainerID string `json:"container_id,omitempty"`
 
 	// Container name.
-	ContainerName string `json:"containerName,omitempty"`
+	ContainerName string `json:"container_name,omitempty"`
 
 	// Node model.
-	NodeModel string `json:"nodeModel,omitempty"`
+	NodeModel string `json:"node_model,omitempty"`
 
 	// Node region.
 	Region string `json:"region,omitempty"`
@@ -557,7 +557,7 @@ type RegisterNodeOKBodyContainerNode struct {
 	Az string `json:"az,omitempty"`
 
 	// Custom user-assigned labels.
-	CustomLabels map[string]string `json:"customLabels,omitempty"`
+	CustomLabels map[string]string `json:"custom_labels,omitempty"`
 }
 
 // Validate validates this register node OK body container node
@@ -589,22 +589,22 @@ swagger:model RegisterNodeOKBodyGenericNode
 type RegisterNodeOKBodyGenericNode struct {
 
 	// Unique randomly generated instance identifier.
-	NodeID string `json:"nodeId,omitempty"`
+	NodeID string `json:"node_id,omitempty"`
 
 	// Unique across all Nodes user-defined name.
-	NodeName string `json:"nodeName,omitempty"`
+	NodeName string `json:"node_name,omitempty"`
 
 	// Node address (DNS name or IP).
 	Address string `json:"address,omitempty"`
 
 	// Linux machine-id.
-	MachineID string `json:"machineId,omitempty"`
+	MachineID string `json:"machine_id,omitempty"`
 
 	// Linux distribution name and version.
 	Distro string `json:"distro,omitempty"`
 
 	// Node model.
-	NodeModel string `json:"nodeModel,omitempty"`
+	NodeModel string `json:"node_model,omitempty"`
 
 	// Node region.
 	Region string `json:"region,omitempty"`
@@ -613,7 +613,7 @@ type RegisterNodeOKBodyGenericNode struct {
 	Az string `json:"az,omitempty"`
 
 	// Custom user-assigned labels.
-	CustomLabels map[string]string `json:"customLabels,omitempty"`
+	CustomLabels map[string]string `json:"custom_labels,omitempty"`
 }
 
 // Validate validates this register node OK body generic node
@@ -645,13 +645,13 @@ swagger:model RegisterNodeOKBodyPMMAgent
 type RegisterNodeOKBodyPMMAgent struct {
 
 	// Unique randomly generated instance identifier.
-	AgentID string `json:"agentId,omitempty"`
+	AgentID string `json:"agent_id,omitempty"`
 
 	// Node identifier where this instance runs.
-	RunsOnNodeID string `json:"runsOnNodeId,omitempty"`
+	RunsOnNodeID string `json:"runs_on_node_id,omitempty"`
 
 	// Custom user-assigned labels.
-	CustomLabels map[string]string `json:"customLabels,omitempty"`
+	CustomLabels map[string]string `json:"custom_labels,omitempty"`
 
 	// True if Agent is running and connected to pmm-managed.
 	Connected bool `json:"connected,omitempty"`
