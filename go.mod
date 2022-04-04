@@ -5,7 +5,7 @@ go 1.16
 replace github.com/go-openapi/spec => github.com/Percona-Lab/spec v0.19.8-percona
 
 require (
-	github.com/go-openapi/errors v0.19.6
+	github.com/go-openapi/errors v0.20.2
 	github.com/go-openapi/jsonreference v0.19.4 // indirect
 	github.com/go-openapi/runtime v0.19.20
 	github.com/go-openapi/strfmt v0.19.5
