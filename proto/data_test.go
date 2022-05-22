@@ -23,8 +23,8 @@ import (
 	"time"
 
 	"github.com/percona/go-mysql/event"
-	"github.com/percona/pmm/proto"
-	qp "github.com/percona/pmm/proto/qan"
+	"github.com/shatteredsilicon/ssm/proto"
+	qp "github.com/shatteredsilicon/ssm/proto/qan"
 	. "gopkg.in/check.v1"
 )
 
