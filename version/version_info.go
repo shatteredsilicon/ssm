@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-var versionRE = regexp.MustCompile(`^(\d+)\.(\d+)\.(\d+)(.*)$`)
+var versionRE = regexp.MustCompile(`^v?(\d+)\.(\d+)\.(\d+)(.*)$`)
 
 type Info struct {
 	Major int
