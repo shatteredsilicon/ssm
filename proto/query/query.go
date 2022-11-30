@@ -22,11 +22,25 @@ import (
 	"time"
 )
 
+// Procedure represents a stored procedure
+type Procedure struct {
+	DB   string
+	Name string
+}
+
+func (p Procedure) String() string {
+	if p.DB == "" {
+		return p.Name
+	}
+	return fmt.Sprintf("%s.%s", p.DB, p.Name)
+}
+
 type Query struct {
 	Id          string // 9C8DEE410FA0E0C8
 	Abstract    string // SELECT tbl1
 	Fingerprint string // select col from tbl1 where id=?
 	Tables      []Table
+	Procedures  []Procedure
 	FirstSeen   time.Time
 	LastSeen    time.Time
 	Status      string
