@@ -117,12 +117,19 @@ type ShowTableStatus struct {
 	Comment       NullString
 }
 
+// GuessDB structure of guessed database infomation
+type GuessDB struct {
+	DB          string
+	IsAmbiguous bool
+}
+
 type TableInfo struct {
-	Type   DBObjectType              `json:",omitempty"`
-	Create string                    `json:",omitempty"`
-	Index  map[string][]ShowIndexRow `json:",omitempty"`
-	Status *ShowTableStatus          `json:",omitempty"`
-	Errors []string                  `json:",omitempty"`
+	Type    DBObjectType              `json:",omitempty"`
+	Create  string                    `json:",omitempty"`
+	Index   map[string][]ShowIndexRow `json:",omitempty"`
+	Status  *ShowTableStatus          `json:",omitempty"`
+	Errors  []string                  `json:",omitempty"`
+	GuessDB *GuessDB                  `json:",omitempty"`
 }
 
 type TableInfoResult map[string]*TableInfo
@@ -149,4 +156,7 @@ type QueryInfo struct {
 
 // QueryInfoResult represents the response
 // of QueryInfo cmd api
-type QueryInfoResult map[string]*QueryInfo
+type QueryInfoResult struct {
+	GuessDB *GuessDB
+	Info    map[string]*QueryInfo
+}
