@@ -22,8 +22,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/percona/go-mysql/event"
 	"github.com/shatteredsilicon/ssm/proto"
+	"github.com/shatteredsilicon/ssm/proto/qan"
 	qp "github.com/shatteredsilicon/ssm/proto/qan"
 	. "gopkg.in/check.v1"
 )
@@ -44,12 +44,12 @@ func (s *TestSuite) TestGetAgentData(t *C) {
 		StartTs: start,
 		EndTs:   end,
 		RunTime: 0.007831957,
-		Global: &event.Class{
+		Global: &qan.Class{
 			TotalQueries:  54,
 			UniqueQueries: 1,
-			Metrics: &event.Metrics{
-				TimeMetrics: map[string]*event.TimeStats{
-					"Lock_time": &event.TimeStats{
+			Metrics: &qan.Metrics{
+				TimeMetrics: map[string]*qan.TimeStats{
+					"Lock_time": &qan.TimeStats{
 						Sum: 0.006123000021034386,
 						Min: 7.300000288523734e-05,
 						Avg: 0.00011338888927841456,
@@ -57,7 +57,7 @@ func (s *TestSuite) TestGetAgentData(t *C) {
 						Med: 0.00011000000085914508,
 						Max: 0.00017600000137463212,
 					},
-					"Query_time": &event.TimeStats{
+					"Query_time": &qan.TimeStats{
 						Sum: 0.09068399993702769,
 						Min: 0.0011579999700188637,
 						Avg: 0.0016793333321671795,
@@ -66,8 +66,8 @@ func (s *TestSuite) TestGetAgentData(t *C) {
 						Max: 0.002704000100493431,
 					},
 				},
-				NumberMetrics: map[string]*event.NumberStats{
-					"Rows_examined": &event.NumberStats{
+				NumberMetrics: map[string]*qan.NumberStats{
+					"Rows_examined": &qan.NumberStats{
 						Sum: 16848,
 						Min: 312,
 						Avg: 312,
@@ -75,7 +75,7 @@ func (s *TestSuite) TestGetAgentData(t *C) {
 						Med: 312,
 						Max: 312,
 					},
-					"Rows_sent": &event.NumberStats{
+					"Rows_sent": &qan.NumberStats{
 						Sum: 16848,
 						Min: 312,
 						Avg: 312,
@@ -86,13 +86,13 @@ func (s *TestSuite) TestGetAgentData(t *C) {
 				},
 			},
 		},
-		Class: []*event.Class{
+		Class: []*qan.Class{
 			{
 				Id:          "B90978440CC11CC7",
 				Fingerprint: "show /*!? global */ status",
-				Metrics: &event.Metrics{
-					TimeMetrics: map[string]*event.TimeStats{
-						"Lock_time": &event.TimeStats{
+				Metrics: &qan.Metrics{
+					TimeMetrics: map[string]*qan.TimeStats{
+						"Lock_time": &qan.TimeStats{
 							Sum: 0.006123000021034386,
 							Min: 7.300000288523734e-05,
 							Avg: 0.00011338888927841456,
@@ -100,7 +100,7 @@ func (s *TestSuite) TestGetAgentData(t *C) {
 							Med: 0.00011000000085914508,
 							Max: 0.00017600000137463212,
 						},
-						"Query_time": &event.TimeStats{
+						"Query_time": &qan.TimeStats{
 							Sum: 0.09068399993702769,
 							Min: 0.0011579999700188637,
 							Avg: 0.0016793333321671795,
@@ -109,8 +109,8 @@ func (s *TestSuite) TestGetAgentData(t *C) {
 							Max: 0.002704000100493431,
 						},
 					},
-					NumberMetrics: map[string]*event.NumberStats{
-						"Rows_examined": &event.NumberStats{
+					NumberMetrics: map[string]*qan.NumberStats{
+						"Rows_examined": &qan.NumberStats{
 							Sum: 16848,
 							Min: 312,
 							Avg: 312,
@@ -118,7 +118,7 @@ func (s *TestSuite) TestGetAgentData(t *C) {
 							Med: 312,
 							Max: 312,
 						},
-						"Rows_sent": &event.NumberStats{
+						"Rows_sent": &qan.NumberStats{
 							Sum: 16848,
 							Min: 312,
 							Avg: 312,
@@ -129,7 +129,7 @@ func (s *TestSuite) TestGetAgentData(t *C) {
 					},
 				},
 				TotalQueries: 54,
-				Example: &event.Example{
+				Example: &qan.Example{
 					QueryTime: 0.002704000100493431,
 					Db:        "",
 					Query:     "SHOW /*!50002 GLOBAL */ STATUS",

@@ -20,18 +20,81 @@ package qan
 import (
 	"time"
 
-	"github.com/percona/go-mysql/event"
 	"github.com/shatteredsilicon/ssm/proto/metrics"
 	"github.com/shatteredsilicon/ssm/proto/query"
 )
 
+// A Class represents all events with the same fingerprint and class ID.
+// This is only enforced by convention, so be careful not to mix events from
+// different classes.
+type Class struct {
+	Id            string   // 32-character hex checksum of fingerprint
+	Fingerprint   string   // canonical form of query: values replaced with "?"
+	Metrics       *Metrics // statistics for each metric, e.g. max Query_time
+	TotalQueries  uint     // total number of queries in class
+	UniqueQueries uint     // unique number of queries in class
+	Example       *Example `json:",omitempty"` // sample query with max Query_time
+	// --
+	Outliers uint   `json:"-"`
+	LastDb   string `json:"-"`
+	Sample   bool   `json:"-"`
+}
+
+type Metrics struct {
+	TimeMetrics   map[string]*TimeStats   `json:",omitempty"`
+	NumberMetrics map[string]*NumberStats `json:",omitempty"`
+	BoolMetrics   map[string]*BoolStats   `json:",omitempty"`
+}
+
+// TimeStats are microsecond-based metrics like Query_time and Lock_time.
+type TimeStats struct {
+	Vals       []float64 `json:"-"`
+	Sum        float64
+	Min        *float64 `json:",omitempty"`
+	Avg        *float64 `json:",omitempty"`
+	Med        *float64 `json:",omitempty"` // median
+	P95        *float64 `json:",omitempty"` // 95th percentile
+	Max        *float64 `json:",omitempty"`
+	OutlierSum float64  `json:"-"`
+}
+
+// NumberStats are integer-based metrics like Rows_sent and Merge_passes.
+type NumberStats struct {
+	Vals       []uint64 `json:"-"`
+	Sum        uint64
+	Min        *uint64 `json:",omitempty"`
+	Avg        *uint64 `json:",omitempty"`
+	Med        *uint64 `json:",omitempty"` // median
+	P95        *uint64 `json:",omitempty"` // 95th percentile
+	Max        *uint64 `json:",omitempty"`
+	OutlierSum uint64  `json:"-"`
+}
+
+// BoolStats are boolean-based metrics like QC_Hit and Filesort.
+type BoolStats struct {
+	Sum        uint64 // %true = Sum/Cnt
+	OutlierSum uint64 `json:"-"`
+}
+
+// A Example is a real query and its database, timestamp, and Query_time.
+// If the query is larger than MaxExampleBytes, it is truncated and TruncatedExampleSuffix
+// is appended.
+type Example struct {
+	QueryTime float64 // Query_time
+	Db        string  // Schema: <db> or USE <db>
+	Query     string  // truncated to MaxExampleBytes
+	Explain   string  // explain
+	Size      int     `json:",omitempty"` // Original size of query.
+	Ts        string  `json:",omitempty"` // in MySQL time zone
+}
+
 type Report struct {
-	UUID    string         // UUID of MySQL instance
-	StartTs time.Time      // Start time of interval, UTC
-	EndTs   time.Time      // Stop time of interval, UTC
-	RunTime float64        // Time parsing data, seconds
-	Global  *event.Class   // Metrics for all data
-	Class   []*event.Class // per-class metrics
+	UUID    string    // UUID of MySQL instance
+	StartTs time.Time // Start time of interval, UTC
+	EndTs   time.Time // Stop time of interval, UTC
+	RunTime float64   // Time parsing data, seconds
+	Global  *Class    // Metrics for all data
+	Class   []*Class  // per-class metrics
 	// slow log:
 	SlowLogFile     string `json:",omitempty"` // not slow_query_log_file if rotated
 	SlowLogFileSize int64  `json:",omitempty"`
