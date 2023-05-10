@@ -108,9 +108,9 @@ type ShowTableStatus struct {
 	IndexLength   NullInt64
 	DataFree      NullInt64
 	AutoIncrement NullInt64
-	CreateTime    NullTime
-	UpdateTime    NullTime
-	CheckTime     NullTime
+	CreateTime    NullString
+	UpdateTime    NullString
+	CheckTime     NullString
 	Collation     NullString
 	Checksum      NullString
 	CreateOptions NullString
