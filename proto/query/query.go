@@ -18,6 +18,7 @@
 package query
 
 import (
+	"database/sql"
 	"fmt"
 	"time"
 )
@@ -66,6 +67,6 @@ type Example struct {
 	Db           string
 	QueryTime    float64
 	Query        string
-	Explain      string
+	Explain      sql.NullString
 	Size         int // Original size of the Query, before any truncation.
 }
