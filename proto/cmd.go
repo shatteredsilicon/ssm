@@ -58,6 +58,11 @@ type Version struct {
 	Revision  string
 }
 
+// Data for Messages command replies
+type Message struct {
+	Content string
+}
+
 func (cmd *Cmd) Reply(data interface{}, errs ...error) *Reply {
 	reply := &Reply{
 		Id:  cmd.Id,
