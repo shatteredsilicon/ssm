@@ -98,9 +98,9 @@ type ShowIndexRow struct {
 
 type ShowTableStatus struct {
 	Name          string
-	Engine        string
+	Engine        NullString
 	Version       string
-	RowFormat     string
+	RowFormat     NullString
 	Rows          NullInt64
 	AvgRowLength  NullInt64
 	DataLength    NullInt64
