@@ -16,6 +16,7 @@ type QAN struct {
 	Interval       uint     `json:",omitempty"` // seconds, 0 = DEFAULT_INTERVAL
 	ExampleQueries *bool    `json:",omitempty"` // send real example of each query
 	FilterOmit     []string `json:",omitempty"` // queries that should be omitted
+	FilterAllow    []string `json:",omitempty"` // queries that are allowed
 	// "slowlog" specific options.
 	MaxSlowLogSize  int64 `json:"-"`          // bytes, 0 = DEFAULT_MAX_SLOW_LOG_SIZE. Don't write it to the config
 	SlowLogRotation *bool `json:",omitempty"` // Enable slow logs rotation.
