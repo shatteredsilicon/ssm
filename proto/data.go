@@ -112,13 +112,25 @@ func NewJsonGzipSerializer() *JsonGzipSerializer {
 }
 
 func (s *JsonGzipSerializer) ToBytes(data interface{}) ([]byte, error) {
-	s.b.Reset()
-	s.g.Reset(s.b)
-	if err := s.e.Encode(data); err != nil {
+	b := &bytes.Buffer{}
+	g := gzip.NewWriter(b)
+
+	bs, err := json.Marshal(data)
+	if err != nil {
 		return nil, err
 	}
-	s.g.Close()
-	return s.b.Bytes(), nil
+
+	if _, err = g.Write(bs); err != nil {
+		return nil, err
+	}
+	if err = g.Flush(); err != nil {
+		return nil, err
+	}
+	if err = g.Close(); err != nil {
+		return nil, err
+	}
+
+	return b.Bytes(), nil
 }
 
 func (s *JsonGzipSerializer) Encoding() string {
