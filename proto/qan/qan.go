@@ -28,12 +28,13 @@ import (
 // This is only enforced by convention, so be careful not to mix events from
 // different classes.
 type Class struct {
-	Id            string   // 32-character hex checksum of fingerprint
-	Fingerprint   string   // canonical form of query: values replaced with "?"
-	Metrics       *Metrics // statistics for each metric, e.g. max Query_time
-	TotalQueries  uint     // total number of queries in class
-	UniqueQueries uint     // unique number of queries in class
-	Example       *Example `json:",omitempty"` // sample query with max Query_time
+	Id            string       // 32-character hex checksum of fingerprint
+	Fingerprint   string       // canonical form of query: values replaced with "?"
+	Metrics       *Metrics     // statistics for each metric, e.g. max Query_time
+	TotalQueries  uint         // total number of queries in class
+	UniqueQueries uint         // unique number of queries in class
+	Example       *Example     `json:",omitempty"` // sample query with max Query_time
+	UserSources   []UserSource // user@host sources parsed from slow log
 	// --
 	Outliers uint   `json:"-"`
 	LastDb   string `json:"-"`
@@ -86,6 +87,13 @@ type Example struct {
 	Explain   string  // explain
 	Size      int     `json:",omitempty"` // Original size of query.
 	Ts        string  `json:",omitempty"` // in MySQL time zone
+}
+
+// A UserSource is a user@host source parsed from slow log
+type UserSource struct {
+	Ts   int64 // unix nano timestamp
+	User string
+	Host string
 }
 
 type Report struct {
