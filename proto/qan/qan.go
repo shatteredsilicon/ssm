@@ -35,6 +35,8 @@ type Class struct {
 	UniqueQueries uint         // unique number of queries in class
 	Example       *Example     `json:",omitempty"` // sample query with max Query_time
 	UserSources   []UserSource // user@host sources parsed from slow log
+	StartAt       time.Time    // start time of the earliest query of this class
+	EndAt         time.Time    // end time of the latest query of this class
 	// --
 	Outliers uint   `json:"-"`
 	LastDb   string `json:"-"`
