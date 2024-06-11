@@ -36,11 +36,15 @@ func Parse(version string) (Info, error) {
 }
 
 func (i Info) String() string {
-	res := fmt.Sprintf("%d.%d.%d", i.Major, i.Minor, i.Patch)
+	res := i.Version()
 	if i.Rest != "" {
 		res += i.Rest
 	}
 	return res
+}
+
+func (i Info) Version() string {
+	return fmt.Sprintf("%d.%d.%d", i.Major, i.Minor, i.Patch)
 }
 
 // Less returns true of this (left) Version is less than right.
