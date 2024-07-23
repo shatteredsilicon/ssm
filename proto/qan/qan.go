@@ -93,9 +93,10 @@ type Example struct {
 
 // A UserSource is a user@host source parsed from slow log
 type UserSource struct {
-	Ts   int64 // unix nano timestamp
-	User string
-	Host string
+	Ts    time.Time
+	User  string
+	Host  string
+	Count int
 }
 
 type Report struct {
