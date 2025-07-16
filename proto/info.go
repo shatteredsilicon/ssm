@@ -19,6 +19,7 @@ type Table query.Table
 
 type TableInfoQuery struct {
 	UUID   string
+	DB     string  // GLOBAL database
 	Create []Table // SHOW CREATE TABLE Db.Table
 	Index  []Table // SHOW INDEXES FROM Db.Table
 	Status []Table // SHOW TABLE STATUS FROM Db LIKE 'Table'
@@ -138,6 +139,7 @@ type TableInfoResult map[string]*TableInfo
 // QueryInfo cmd api
 type QueryInfoParam struct {
 	UUID      string
+	DB        string  // GLOBAL database
 	Table     []Table // SHOW CREATE TABLE Db.Table
 	Procedure []query.Procedure
 	Index     []Table // SHOW INDEXES FROM Db.Table
