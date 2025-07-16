@@ -28,6 +28,7 @@ type ExplainQuery struct {
 type ExplainResult struct {
 	Classic []*ExplainRow
 	JSON    string // since MySQL 5.6.5
+	TEXT    string
 }
 
 type ExplainRow struct {
