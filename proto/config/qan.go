@@ -11,12 +11,14 @@ const (
 )
 
 type QAN struct {
-	UUID           string   // of MySQL instance
-	CollectFrom    string   `json:",omitempty"` // "slowlog" or "perfschema"
-	Interval       uint     `json:",omitempty"` // seconds, 0 = DEFAULT_INTERVAL
-	ExampleQueries *bool    `json:",omitempty"` // send real example of each query
-	FilterOmit     []string `json:",omitempty"` // queries that should be omitted
-	FilterAllow    []string `json:",omitempty"` // queries that are allowed
+	UUID             string   // of MySQL instance
+	CollectFrom      string   `json:",omitempty"` // "slowlog" or "perfschema"
+	Interval         uint     `json:",omitempty"` // seconds, 0 = DEFAULT_INTERVAL
+	ExampleQueries   *bool    `json:",omitempty"` // send real example of each query
+	FilterOmit       []string `json:",omitempty"` // queries that should be omitted
+	FilterAllow      []string `json:",omitempty"` // queries that are allowed
+	PrefetchMetadata *bool    `json:",omitempty"` // prefetch metadata
+	PrefetchExplain  *bool    `json:",omitempty"` // prefetch explain
 	// "slowlog" specific options.
 	MaxSlowLogSize  int64 `json:"-"`          // bytes, 0 = DEFAULT_MAX_SLOW_LOG_SIZE. Don't write it to the config
 	SlowLogRotation *bool `json:",omitempty"` // Enable slow logs rotation.
