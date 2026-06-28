@@ -20,6 +20,7 @@ package qan
 import (
 	"time"
 
+	"github.com/shatteredsilicon/ssm/proto"
 	"github.com/shatteredsilicon/ssm/proto/metrics"
 	"github.com/shatteredsilicon/ssm/proto/query"
 )
@@ -28,13 +29,15 @@ import (
 // This is only enforced by convention, so be careful not to mix events from
 // different classes.
 type Class struct {
-	Id            string       // 32-character hex checksum of fingerprint
-	Fingerprint   string       // canonical form of query: values replaced with "?"
+	Id            string // 32-character hex checksum of fingerprint
+	Fingerprint   string // canonical form of query: values replaced with "?"
+	Abstract      string
 	Metrics       *Metrics     // statistics for each metric, e.g. max Query_time
 	TotalQueries  uint         // total number of queries in class
 	UniqueQueries uint         // unique number of queries in class
 	Example       *Example     `json:",omitempty"` // sample query with max Query_time
 	UserSources   []UserSource // user@host sources parsed from slow log
+	Metadata      *Metadata    `json:",omitempty"`
 	StartAt       time.Time    // start time of the earliest query of this class
 	EndAt         time.Time    // end time of the latest query of this class
 	// --
@@ -83,12 +86,13 @@ type BoolStats struct {
 // If the query is larger than MaxExampleBytes, it is truncated and TruncatedExampleSuffix
 // is appended.
 type Example struct {
-	QueryTime float64 // Query_time
-	Db        string  // Schema: <db> or USE <db>
-	Query     string  // truncated to MaxExampleBytes
-	Explain   string  // explain
-	Size      int     `json:",omitempty"` // Original size of query.
-	Ts        string  `json:",omitempty"` // in MySQL time zone
+	QueryTime float64   // Query_time
+	Db        string    // Schema: <db> or USE <db>
+	Query     string    // truncated to MaxExampleBytes
+	Explain   string    // explain
+	Metadata  *Metadata `json:",omitempty"`
+	Size      int       `json:",omitempty"` // Original size of query.
+	Ts        string    `json:",omitempty"` // in MySQL time zone
 }
 
 // A UserSource is a user@host source parsed from slow log
@@ -172,4 +176,21 @@ type Summary struct {
 	Sparks     []interface{}            `json:",omitempty"`
 	Metrics2   interface{}              `json:",omitempty"`
 	Sparks2    interface{}              `json:",omitempty"`
+}
+
+type TableMetadata struct {
+	query.Table
+	QueryInfo interface{}
+}
+
+type ProcedureMetadata struct {
+	query.Procedure
+	QueryInfo interface{}
+}
+
+type Metadata struct {
+	Tables     []TableMetadata     `json:",omitempty"`
+	Views      []TableMetadata     `json:",omitempty"`
+	Procedures []ProcedureMetadata `json:",omitempty"`
+	GuessDB    *proto.GuessDB      `json:",omitempty"`
 }
