@@ -18,9 +18,7 @@
 package query
 
 import (
-	"database/sql"
 	"fmt"
-	"time"
 )
 
 // Procedure represents a stored procedure
@@ -36,17 +34,6 @@ func (p Procedure) String() string {
 	return fmt.Sprintf("%s.%s", p.DB, p.Name)
 }
 
-type Query struct {
-	Id          string // 9C8DEE410FA0E0C8
-	Abstract    string // SELECT tbl1
-	Fingerprint string // select col from tbl1 where id=?
-	Tables      []Table
-	Procedures  []Procedure
-	FirstSeen   time.Time
-	LastSeen    time.Time
-	Status      string
-}
-
 type Table struct {
 	Db    string
 	Table string
@@ -57,16 +44,4 @@ func (t Table) String() string {
 		return t.Table
 	}
 	return fmt.Sprintf("%s.%s", t.Db, t.Table)
-}
-
-type Example struct {
-	QueryId      string // Query.Id
-	InstanceUUID string // Instance.UUID
-	Period       time.Time
-	Ts           time.Time
-	Db           string
-	QueryTime    float64
-	Query        string
-	Explain      sql.NullString
-	Size         int // Original size of the Query, before any truncation.
 }

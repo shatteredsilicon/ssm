@@ -156,18 +156,6 @@ type QueryRank struct {
 	Stats       metrics.Stats // this query's Profile.Metric stats
 }
 
-type QueryReport struct {
-	InstanceId string                   // UUID of MySQL instance
-	Begin      time.Time                // time range [Begin, End)
-	End        time.Time                // time range [Being, End)
-	Query      query.Query              // id, abstract, fingerprint, etc.
-	Metrics    map[string]metrics.Stats // keyed on metric name, e.g. Query_time
-	Example    query.Example            // query example
-	Sparks     []interface{}            `json:",omitempty"`
-	Metrics2   interface{}              `json:",omitempty"`
-	Sparks2    interface{}              `json:",omitempty"`
-}
-
 type Summary struct {
 	InstanceId string                   // UUID of MySQL instance
 	Begin      time.Time                // time range [Begin, End)
