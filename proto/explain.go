@@ -29,6 +29,7 @@ type ExplainResult struct {
 	Classic []*ExplainRow `json:",omitempty"`
 	JSON    string        `json:",omitempty"` // since MySQL 5.6.5
 	TEXT    string        `json:",omitempty"`
+	Visual  string        `json:",omitempty"`
 }
 
 type ExplainRow struct {
